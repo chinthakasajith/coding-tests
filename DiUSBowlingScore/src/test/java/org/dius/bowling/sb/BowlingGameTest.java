@@ -142,6 +142,9 @@ public class BowlingGameTest {
 
     }
 
+    /**
+     * Exception is generated if try and go beyond 10 frames / match
+     */
     @Test(expected = BowlingGameImpl.BowlingException.class)
     public void testPlayMoreThanAllFrames() {
 

@@ -15,6 +15,9 @@ public class BowlingGameImpl implements BowlingGame {
 
 
 
+    /**
+     * initiate the game, ie all {@link BowlingGameImpl#MAX_FRAMES} frames
+     */
     public BowlingGameImpl() {
         frames = new ArrayList<>(MAX_FRAMES);
 
@@ -28,7 +31,7 @@ public class BowlingGameImpl implements BowlingGame {
         Frame frame = getFrame();
 
         if (frame == null) {
-            throw new BowlingException("all attempts exhausted - start new game");
+            throw new BowlingException("All attempts exhausted - start new game");
         }
 
         frame.setScore(noOfPins);
@@ -42,6 +45,10 @@ public class BowlingGameImpl implements BowlingGame {
         }
     }
 
+    /**
+     * returns a frame and moves to next frame if current has used up attempts
+     * @return {@link Frame}
+     */
     private Frame getFrame(){
 
         Frame frame = getCurrentFrame();
@@ -127,6 +134,9 @@ public class BowlingGameImpl implements BowlingGame {
         return frameCounter == MAX_FRAMES - 1;
     }
 
+    /**
+     * Manages score and attempts allowed for each frame
+     */
     private class Frame {
 
         private int[] scores = new int[MAX_ATTEMPTS_PER_FRAME];
@@ -176,6 +186,9 @@ public class BowlingGameImpl implements BowlingGame {
 
     }
 
+    /**
+     * Represents an exception for the bowling game
+     */
     public class BowlingException extends RuntimeException {
 
         BowlingException(String message) {
